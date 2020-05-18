@@ -1,0 +1,228 @@
+﻿/*@import url('../libs/Chart.js/css/Chart.css');*/
+/*start richText*/
+.richText {
+    width: calc(100% - 30px);
+}
+
+    .richText:first-of-type .richText-editor {
+        height: 40px;
+    }
+
+    .richText .richText-editor {
+        height: 60px;
+    }
+
+.opacity_3 {
+    opacity: 0.3;
+}
+
+
+#QueryGridFeatureResult .col-3, #QueryGridFeatureResult .col-6, #QueryGridFeatureResult .col-9 {
+    display: inline-block !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(209,209,209,1) !important;
+}
+
+.table-striped tr:nth-of-type(odd) {
+    /*background-color: var(--gray-dark-bgcolor);*/
+    background-color: red;
+}
+
+
+table#attrTable tr:nth-child(odd) {
+    /*background-color: #D1D1D1 !important;*/
+    background-color: rgba(209,209,209,0.4) !important;
+}
+
+table.fieldListTable tr:nth-child(odd) {
+    /*margin-top:0px !important;*/
+    background-color: rgba(209,209,209,0.4) !important;
+}
+
+.card-header-title {
+    width: 70%;
+    font-size: 16px;
+}
+
+.custom-bg-white {
+    background-color: white;
+}
+
+.toggle_mode_container {
+    height: auto !important;
+    max-height: none !important;
+}
+/**/
+@page {
+    margin: -5px -5px 40px -5px;
+    padding: 0px;
+    size: A4 portrait;
+    /*size: landscape;*/
+
+    @bottom-center {
+        content: counter(page) "/" counter(pages);
+    }
+}
+
+.printTitleDescription {
+    width: 100% !important;
+    position: absolute;
+    top:700px !important;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10000;
+    border: 0px solid transparent !important;
+}
+.reportTitleContainer {
+    /*border: 0px solid transparent !important;*/
+    border-color: transparent  !important;
+}
+.richText {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+    .richText .richText-toolbar {
+        border: 0 !important;
+    }
+
+    .richText .richText-editor {
+        background-color: transparent !important;
+        border: 0px solid transparent !important;
+        overflow: hidden;
+    }
+
+    .richText:first-of-type .richText-editor {
+        height: 100px;
+    }
+
+.custom-bg-white {
+    background-color: transparent !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.printBreakPage {
+    /*clear: both;*/
+    page-break-after: always !important;
+}
+/*a::after {
+    content: none !important;
+}*/
+/*@media print {*/
+    /*a[href]::after {
+        display: none !important;
+        visibility: hidden !important;
+        content: none !important;
+    }*/
+/*}*/
+/*@media print {*/
+    /*a[href]:after {
+        content: none !important;
+    }*/
+/*}*/
+.report-header {
+    display: table-header-group;
+    height: 100px;
+}
+
+#printfeatureList {
+    /*margin:auto 30px;*/
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+}
+/*#printTableContainer{
+    margin:auto 30px !important;
+}*/
+.map_item {
+    margin: auto 30px !important;
+}
+
+.table_item {
+    margin: auto 30px !important;
+    padding-right: 30px !important;
+    /*width: 90% !important;*/
+}
+
+.feature_list {
+    margin: auto 30px !important;
+    padding-right: 30px !important;
+    /*width: 90% !important;*/
+}
+
+.printCustomHeader {
+    margin-top: 20px !important;
+}
+
+
+div#printfeatureList {
+    border: 0px !important;
+}
+
+.table thead th {
+    vertical-align: top;
+    text-align: center;
+}
+
+tfoot.report-footer {
+    display: table-footer-group;
+}
+
+tbody {
+    margin: 0 20px;
+}
+
+.page-footer {
+    /*background: rgb(48, 94, 99) !important;*/
+    border-top: 3px solid #FF0000;
+    padding-top: 5px !important;
+    color: #000000 !important;
+    text-align: center;
+}
+
+.footer-space {
+    height: 30px;
+    background-color: #FFFFFF;
+}
+
+.footer {
+    position: fixed !important;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    direction: ltr;
+    background-color: #FFFFFF;
+    display: block !important;
+}
+
+.fieldListTable {
+    page-break-inside: avoid;
+}
+
+.printMapSubContainer{
+    margin-right: 28px !important;
+}
+
+#legendContainer ul {
+    break-inside: avoid !important;
+}
+
+#reportPieChart, #reportBarChart {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.pie_item, .bar_item {
+    display: inline-block;
+    break-inside: avoid !important;
+    page-break-inside: avoid;
+    margin-bottom:10px !important;
+}
+
+.card-header {
+    height: 40px !important;
+    padding: 0px;
+}

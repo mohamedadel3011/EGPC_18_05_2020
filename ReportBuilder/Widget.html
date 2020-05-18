@@ -1,0 +1,235 @@
+<div>
+    <div class="loaderBackground" style="display:none;"></div>
+    <div class="loader" style="display:none;"></div>
+    <!--<div data-dojo-type="jimu/dijit/LoadingIndicator" data-dojo-attach-point="loadingIndicator" id="dvLoading_" style="display:none"></div>-->
+    <!--Start Widget-->
+    <div class="card main_card bg_gray border-0 d-flex flex-column mt-half rounded-0">
+        <!--Start Widget Header-->
+        <div class="card-header_container bg_light_blue text-white d-flex justify-content-between align-items-center">
+            <ol class="breadcrumb rounded-0 flex-column flex-md-row m-1 bg-transparent">
+                <li class="breadcrumb-item d-flex align-items-center text-capitalize ${nls.padding_x_4} mb-3 mb-md-0 breadcrumb-item-reportMap opacity_3 one_only" data-click="#reportMap">
+                    <!--active-->
+                    <i class="fas fa-map-marked-alt fa-lg ${nls.margin_x_2}"></i>
+                    <span class="font_size_14">${nls.map}</span>
+                </li>
+                <li class="breadcrumb-item d-flex align-items-center text-capitalize ${nls.padding_x_4} mb-3 mb-md-0 breadcrumb-item-reportFeatureList opacity_3 one_only" data-click="#reportFeatureList">
+                    <i class="fas fa-th-list fa-lg ${nls.margin_x_2}"></i>
+                    <span class="font_size_14">${nls.featureList}</span>
+                </li>
+                <li class="breadcrumb-item d-flex align-items-center text-capitalize ${nls.padding_x_4} mb-3 mb-md-0 breadcrumb-item-reportTable opacity_3 one_only" data-click="#reportTable">
+                    <i class="fa fa-table fa-lg ${nls.margin_x_2}"></i>
+                    <span class="font_size_14">${nls.table}</span>
+                </li>
+                <li class="d-flex align-items-center text-capitalize ${nls.padding_x_4} mb-3 mb-md-0 cursor_pointer" data-dojo-attach-event="click:onClickAddBar">
+                    <i class="far fa-chart-bar fa-lg ${nls.margin_x_2}"></i>
+                    <span class="font_size_14">${nls.barChart}</span>
+                </li>
+                <li class="d-flex align-items-center text-capitalize ${nls.padding_x_4} mb-3 mb-md-0 cursor_pointer" data-dojo-attach-event="click:onClickAddPie">
+                    <i class="fas fa-chart-pie fa-lg ${nls.margin_x_2}"></i>
+                    <span class="font_size_14">${nls.pieChart}</span>
+                </li>
+            </ol>
+            <div class="widget_view_mode">
+                <div class="widget_view_mode_container row pt-2">
+                    <div class="col-sm-6 pr-0">
+                        <div class="custom-control custom-radio custom-control-inline mr-0">
+                            <input type="radio" id="portrait" name="widget_view_mode" class="custom-control-input" checked="">
+                            <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-white cursor_pointer" for="portrait">${nls.portrait}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 pr-0 pl-4">
+                        <div class="custom-control custom-radio custom-control-inline mr-0">
+                            <input type="radio" id="landscape" name="widget_view_mode" class="custom-control-input">
+                            <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-white cursor_pointer" for="landscape">${nls.landscape}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn text-white ${nls.margin_x_4}" id="btnPrint" data-dojo-attach-event="click:onClickPrint" disabled><i class="fas fa-print fa-md ${nls.margin_x_2}"></i><span class="font_size_14 cursor_pointer">${nls.print}</span></button>
+            </div>
+        </div>
+        <!--End Widget Header-->
+        <!--Start Widget Body-->
+        <div class="card-body mt-1 py-0 px-1" style="overflow-x:hidden;">
+            <div id="divPrint" class="position-relative card_body_child border border_custom_gray rounded bg-white p-2 ">
+                <!--Start Title And Description-->
+                <div class="row printBreakPage" id="mapParent">
+                    <div id="ReportTitleComponent" class="position-absolute printBreakPage w-100"></div>
+                </div>
+                <!--End Title And Description-->
+                <!--Start Widget Items-->
+                <div class="row printBreakPage px-3 scrollIntoView" id="scrollIntoView_reportMap">
+                    <!-- mt-n4-->
+                    <table class="col" id="reportMap">
+                        <!--ml-3 mr-3 w-100-->
+                        <thead class="report-header">
+                            <tr>
+                                <th>
+                                    <img src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="printPortraitHeader d-none " style="margin-bottom: 30px !important;" />
+                                    <img src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="printLandscapeHeader d-none w-100" style="margin-bottom: 30px !important;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!--Start Map Item-->
+                                    <div id="ReportMapComponent"></div>
+                                    <!--End Map Item-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="footer-space">&nbsp;</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row printBreakPage px-3 scrollIntoView" id="scrollIntoView_reportTable">
+                    <!-- mt-n4 mt_n25-->
+                    <table class="col" id="reportTable">
+                        <thead class="report-header">
+                            <tr>
+                                <th>
+                                    <img src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="printPortraitHeader d-none" style="margin-bottom: 10px !important;" />
+                                    <img src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="printLandscapeHeader d-none w-100" style="margin-bottom: 10px !important;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!--Start Table Item-->
+                                    <div class="">
+                                        <div id="ReportTableControlComponent"></div>
+                                    </div>
+                                    <!--End Table Item-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="footer-space">&nbsp;</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row printBreakPage px-3 scrollIntoView" id="scrollIntoView_reportFeatureList">
+                    <!-- mt-n4-->
+                    <table class="col" id="reportFeatureList">
+                        <thead class="report-header">
+                            <tr>
+                                <th>
+                                    <img src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="printPortraitHeader d-none" style="margin-bottom: 10px !important;" />
+                                    <img src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="printLandscapeHeader d-none w-100" style="margin-bottom: 10px !important;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!--Start Feature List-->
+                                    <div class="">
+                                        <div id="ReportFeatureControlComponent"></div>
+                                    </div>
+                                    <!--End Feature List-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="footer-space">&nbsp;</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row printBreakPage px-3 scrollIntoView" id="scrollIntoView_reportPieChart">
+                    <!-- mt-n3-->
+                    <table class="col w-100">
+                        <thead class="report-header">
+                            <tr>
+                                <th>
+                                    <img src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="printPortraitHeader d-none" style="margin-bottom: 10px !important;" />
+                                    <img src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="printLandscapeHeader d-none w-100" style="margin-bottom: 10px !important;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!--Start Pie Chart Item-->
+                                    <div class="" id="reportPieChart">
+                                        <!--  <div id="ReportPieChartComponent" style="display:none;"></div>-->
+                                    </div>
+                                    <!--End Pie Chart Item-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="footer-space">&nbsp;</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row printBreakPage px-3 scrollIntoView" id="scrollIntoView_reportBarChart">
+                    <!-- mt-n3-->
+                    <table class="col w-100">
+                        <thead class="report-header">
+                            <tr>
+                                <th>
+                                    <img src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="printPortraitHeader d-none" style="margin-bottom: 10px !important;" />
+                                    <img src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="printLandscapeHeader d-none w-100" style="margin-bottom: 10px !important;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!--Start Bar Chart Item-->
+                                    <div class="" id="reportBarChart"></div>
+                                    <!--End Bar Chart Item-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="footer-space">&nbsp;</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!--End Widget Items-->
+
+                <div class="footer">
+                    <div class="footer-info page-footer">
+                        <span style="float: left; margin-left: 20px;">${nls.printedBy} ${nls.EGPC}</span>
+                        <span>${nls.reportCopyRight} ${nls.esrinea}</span><span id="crYearpg1"> </span>
+                        <span id="datepg1"></span>
+                        <span id="pageFooter"></span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Widget Body-->
+        <!--Start Widget Footer-->
+        <div class="card-footer bg-transparent border-0 d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
+            <!--<button type="button" class="btn bg_dark_blue text-white" id="btnPrint" data-dojo-attach-event="click:onClickPrint" disabled><i class="fas fa-print fa-md ${nls.margin_x_2}"></i><span class="font_size_14">Print</span></button>-->
+        </div>
+        <!--End Widget Footer-->
+    </div>
+    <!--End Widget Card-->
+</div>

@@ -1,0 +1,72 @@
+﻿<div>
+    <!--Start Map Item-->
+    <div class="map_item">
+        <div class="card printMapSubContainer border border_custom_gray">
+            <div class="card-header rounded-top d-flex justify-content-between align-items-center text-white text-capitalize bg_light_blue p-2">
+                <div class="card-header-title ${nls.textAlign}" contenteditable="true" id="mapTitleText">${nls.map}</div>
+                <div class="toggle_mode toggle_mode_not_for_chart">
+                    <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer configurationItem d-print-none ${nls.margin_x_1}" data-view="#map_edit_mode" data-toggle="tooltip" data-placement="top" title="${nls.configuration}"><i class="fas fa-sliders-h fa-lg"></i></span>
+                    <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer  d-print-none" data-dojo-attach-event="click:onClickDeleteBtn" data-toggle="tooltip" data-placement="top" title="${nls.delete}"><i class="far fa-trash-alt fa-lg"></i></span><!--deleteItem-->
+                </div>
+            </div>
+            <div class="toggle_mode_container rounded-bottom my-1 ${nls.margin_x_1}">
+                <!--Start View Mode Of Map-->
+                <div class="view_mode ${nls.padding_x_1} d-print-block">
+                    <div class="card-body p-0 printBreakPage border-0" id="printMapLegendsContainer">
+                        <div data-dojo-type="jimu/dijit/LoadingIndicator" data-dojo-attach-point="loadingShelter" id="dvLoading" style="display:none"></div>
+                        <img class="card-img img-fluid rounded-0" id="dynamicMap" alt="map" />
+                        <!--<div class="hr mx-4"></div>-->
+                        <div class="card-footer_map bg-transparent px-5" id="legendContainer">
+                        </div>
+                    </div>
+                </div>
+                <!--End View Mode Of Map-->
+                <!--Start Edit Mode Of Map-->
+                <div class="edit_mode flex-column ${nls.padding_x_1} d-print-none" id="map_edit_mode">
+                    <div class="card-body pt-4 border-0">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local}">
+                                        <input type="radio" id="displayOriginalExtent" name="displayExtent" class="custom-control-input" checked>
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayOriginalExtent">${nls.displayResultsExtent}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local}" id="chxExportCurrentMap">
+                                        <input type="radio" id="displayCurrentExtent" name="displayExtent" class="custom-control-input">
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayCurrentExtent">${nls.displayCurrentExtent}</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local}">
+                                    <input type="checkbox" class="custom-control-input" id="displayLegend" checked>
+                                    <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLegend">${nls.displayLegend}</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 px-2 py-0">
+                        <hr class="mt-1 mb-2" />
+                        <div class="d-flex justify-content-sm-end">
+                            <button type="button" class="btn btn-outline-success apply-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="map_apply_btn">
+                                <!-- onclick="swal('Hello world!');"-->
+                                <i class="fas fa-check-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.apply}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary reset-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="map_reset_btn">
+                                <i class="fas fa-cog fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.reset}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger py-1 d-inline-flex align-items-center" id="map_cancel_btn">
+                                <i class="fas fa-times-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.cancel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--End Edit Mode Of Map-->
+            </div>
+        </div>
+    </div>
+    <!--End Map Item-->
+</div>

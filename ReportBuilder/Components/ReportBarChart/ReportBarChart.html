@@ -1,0 +1,274 @@
+﻿<div class="bar_item col-6 mt-2">
+    <div class="card border_custom_gray printBarChart printBreakPage">
+        <div class="card-header rounded-top d-flex justify-content-between align-items-center text-white text-capitalize bg_light_blue p-2">
+            <!--<span>Bar Chart</span>-->
+            <div class="card-header-title ${nls.textAlign}" contenteditable="true" id="barChartTitleText${count}">${nls.barChart}</div>
+            <!--<div class="toggle_mode">
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer swap_icon" data-view="#bar_edit_mode"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer edit_icon swap_icon" data-view="#bar_view_mode"><i class="fas fa-chevron-left fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer deleteItem"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>-->
+            <div class="toggle_mode toggle_mode_for_chart d-flex">
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer configurationItem d-print-none ${nls.margin_x_2}" id="barViewMode${count}" data-dojo-attach-event="click:onClickConfigrationItem" data-toggle="tooltip" data-placement="top" title="${nls.configuration}"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer deleteItem d-print-none" id="bar_deleteItem${count}" data-dojo-attach-event="click:onClickDeleteItem" data-toggle="tooltip" data-placement="top" title="${nls.delete}"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>
+        </div>
+        <div class="toggle_mode_container rounded-bottom my-1 ${nls.margin_x_1}">
+            <!--Start View Mode Of Bar Chart Item-->
+            <div class="view_mode view_mode_chart d-none d-print-block" id="bar_view_mode${count}">
+                <div class="card-body printBreakPage">
+                    <canvas id="myBarChart${count}" style="width:400px;height:200px;"></canvas>
+                </div>
+            </div>
+            <!--End View Mode Of Bar Chart Item-->
+            <!--Start Edit Mode Of Bar Chart Item-->
+            <div class="edit_mode edit_icon_content edit_mode_chart d-block d-print-none" id="bar_edit_mode${count}">
+                <div class="card-body px-2 pt-1 ${nls.margin_x_1}">
+                    <form>
+                        <!--Start Toggle Field-->
+                        <div class="form-group row no-gutters my-2">
+                            <div class="col-sm-12 row no-gutters">
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="radio" id="singleField${count}" name="field_type" class="custom-control-input" value="single_field${count}" checked>
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="singleField${count}">${nls.singleFeature}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="radio" id="multiFeature${count}" name="field_type" class="custom-control-input" value="multi_field${count}">
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="multiFeature${count}">${nls.multiFeature}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-0 mb-2">
+                        <!--End Toggle Field-->
+                        <!--Start Single Field-->
+                        <div class="type_field single_field" id="single_field${count}">
+                            <div class="form-group row no-gutters mb-2">
+                                <label class="col-sm-3 col-form-label font-weight-bold font_size_14 text-muted">${nls.chartField}</label>
+                                <div class="col-sm-9 custom-control">
+                                    <select class="form-control border-secondary text-dark p-0 font_size_12" id="ddlBarChartFields${count}">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row no-gutters mb-2">
+                                <label class="col-sm-3 col-form-label font-weight-bold font_size_14 text-muted">${nls.setColor}</label>
+                                <!--ColorPiker-->
+                                <div class="col-sm-9">
+                                    <div class="color-wrapper h-100 w-100">
+                                        <div class="colorwrapper_singlefield ${nls.colorwrapper_singlefield_local}">
+                                            <div class="color-holder call-picker" id="singleBarChartColorPicker${count}"></div>
+                                            <div class="color-picker ${nls.color_picker_local}"></div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="dropdown">
+                                        <button class="btn dropdown-toggle border border-secondary w-100 text-left" type="button" id="barColor_single${count}"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            &nbsp; &nbsp; &nbsp; &nbsp;
+                                        </button>
+                                        <div class="dropdown-menu dropdown_menu_colorpicker w-75 h-100 p-1" aria-labelledby="barColor_single${count}">
+                                            <div class="color-wrapper h-100">
+                                                <div class="colorwrapper_singlefield">
+                                                    <div class="color-holder call-picker"></div>
+                                                    <div class="color-picker ${nls.color_picker_local}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <!--<div class="col-sm-9 custom-control">
+                                    <select class="form-control border-secondary text-dark p-0 font_size_12">
+                                        <option></option>
+                                    </select>
+                                </div>-->
+                            </div>
+
+                            <div class="form-group row no-gutters mb-2">
+                                <div class="col-sm-9 offset-sm-3 row no-gutters">
+                                    <div class="col-sm-6 pr-0">
+                                        <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                            <input type="checkbox" class="custom-control-input" id="displayLabels_singlebar${count}" checked>
+                                            <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLabels_singlebar${count}">${nls.displayLabels}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pr-0">
+                                        <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                            <input type="checkbox" class="custom-control-input" id="displayLegend_singlebar${count}">
+                                            <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLegend_singlebar${count}">${nls.displayChartLegend}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--End Single Field-->
+                        <!--Start Multi Field-->
+                        <div class="type_field multi_field" id="multi_field${count}">
+                            <!--Start Chart Field-->
+                            <div class="chart_field_container" id="chart_field_container_countno${count}">
+                                <div class="form-group row no-gutters mb-1 align-items-center">
+                                    <label class="col-sm-3 font-weight-bold font_size_14 text-muted mb-0">${nls.chartField}</label>
+                                    <div class="col-sm-9 custom-control d-flex flex-column">
+                                        <div class="d-inline-flex justify-content-between align-items-center">
+                                            <select id="selectFields${count}M0" class="form-control border-secondary text-dark p-0 font_size_12">
+                                                <option></option>
+                                            </select>
+                                            <!--<i class="far fa-trash-alt fa-lg border border-secondary p-2 ml-2 rounded text-secondary cf_delete"></i>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row no-gutters mb-2">
+                                <div class="col-sm-8 offset-sm-3">
+                                    <button class="btn p-1 border border-secondary rounded w-50 font_size_14 mt-1" id="add_chart_field_countno${count}" data-dojo-attach-event="click:onClickAddChartField"><i class="fas fa-plus-circle fa-lg text-success ${nls.margin_x_2}"></i>${nls.addFieldValue}</button>
+                                </div>
+                            </div>
+                            <!--End Chart Field-->
+                            <div class="form-group row no-gutters mb-2">
+                                <label class="col-sm-3 col-form-label font-weight-bold font_size_14 text-muted">${nls.setColor}</label>
+                                <!--ColorPiker-->
+                                <div class="col-sm-9">
+                                    <div class="indicators_palette dropdown">
+                                        <button type="button" id="Indicators_palette${count}"
+                                                class="btn dropdown-toggle ${nls.dropdown_toggle_local} text-capitalize btn-block bg-white border border-secondary p_6 ${nls.padding_x_4_reverse}"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="btn-group ${nls.btn_group_local} w-100 ${nls.padding_x_3}">
+                                                <span type="button" class="btn py-2" style="background-color: #084325"></span>
+                                                <span type="button" class="btn py-2" style="background-color: #1d7e1f"></span>
+                                                <span type="button" class="btn py-2" style="background-color: #1dd221"></span>
+                                                <span type="button" class="btn py-2" style="background-color: #8bfb8d"></span>
+                                                <span type="button" class="btn py-2" style="background-color: #e1fcb7"></span>
+                                            </div>
+                                        </button>
+                                        <div class="dropdown-menu w-100 border-secondary" aria-labelledby="Indicators_palette${count}">
+
+                                            <ul class="m-0 p-0 list-unstyled" id="paletteUlID${count}">
+                                                <li class="border-bottom border_custom_gray p_y_4 p_x_8 selected_family">
+                                                    <div class="btn-group ${nls.btn_group_local} btn-block" role="group" aria-label="Basic example">
+                                                        <span type="button" class="btn py-2" style="background-color: #084325"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #1d7e1f"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #1dd221"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #8bfb8d"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #e1fcb7"></span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="border-bottom border_custom_gray p_y_4 p_x_8">
+                                                    <div class="btn-group ${nls.btn_group_local} btn-block" role="group" aria-label="Basic example">
+                                                        <span type="button" class="btn py-2" style="background-color: #3d1b1a"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #631515"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #c00000"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #ff5c5d"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #ffabab"></span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="border-bottom border_custom_gray p_y_4 p_x_8">
+                                                    <div class="btn-group ${nls.btn_group_local} btn-block" role="group" aria-label="Basic example">
+                                                        <span type="button" class="btn py-2" style="background-color: #30162f"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #530d53"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #aa44aa"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #d873d9"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #f9c7fa"></span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="border-bottom border_custom_gray p_y_4 p_x_8">
+                                                    <div class="btn-group ${nls.btn_group_local} btn-block" role="group" aria-label="Basic example">
+                                                        <span type="button" class="btn py-2" style="background-color: #0c2e51"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #004a93"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #007c84"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #42c5cd"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #b5e6ea"></span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="border-bottom border-0 p_y_4 p_x_8">
+                                                    <div class="btn-group ${nls.btn_group_local} btn-block" role="group" aria-label="Basic example">
+                                                        <span type="button" class="btn py-2" style="background-color: #67240a"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #c93f01"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #ff6600"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #ff9a58"></span>
+                                                        <span type="button" class="btn py-2" style="background-color: #f8ccaf"></span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row no-gutters mb-2">
+                                <div class="col-sm-3">
+                                    <label class="col-form-label font-weight-bold font_size_14 text-muted py-0">${nls.statistics}</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="form-group row no-gutters mb-2">
+
+                                        <div class="col-sm-6">
+                                            <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local}">
+                                                <input type="checkbox" class="custom-control-input" id="displayLabels_multibar${count}" checked>
+                                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLabels_multibar${count}">${nls.displayLabels}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local}">
+                                                <input type="checkbox" class="custom-control-input" id="displayLegend_multibar${count}">
+                                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLegend_multibar${count}">${nls.displayChartLegend}</label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group row no-gutters">
+                                        <div class="col-sm-6">
+                                            <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local}">
+                                                <input type="radio" id="sum${count}" name="statistics" class="custom-control-input" checked>
+                                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="sum${count}">${nls.sum}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local}">
+                                                <input type="radio" id="avg${count}" name="statistics" class="custom-control-input">
+                                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="avg${count}">${nls.avg}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Multi Field-->
+                    </form>
+                </div>
+                <div class="card-footer bg-transparent border-0 px-2 py-0">
+                    <hr class="mt-1 mb-2" />
+                    <div class="d-flex justify-content-sm-between align-items-center">
+                        <div>
+                            <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                <input type="checkbox" id="barDisplayNulls${count}" name="barDisplayNulls" class="custom-control-input" checked>
+                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-info" for="barDisplayNulls${count}"><u>${nls.displayNulls}</u></label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-success apply-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="bar_apply_btn${count}" data-dojo-attach-event="click:onClickApply" disabled>
+                                <!-- onclick="swal('Hello world!');"-->
+                                <i class="fas fa-check-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.apply}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary reset-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="bar_reset_btn${count}" data-dojo-attach-event="click:onClickReset" disabled>
+                                <i class="fas fa-cog fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.reset}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger py-1 d-inline-flex align-items-center" id="bar_cancel_btn${count}" data-dojo-attach-event="click:onClickCancel" disabled>
+                                <i class="fas fa-times-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.cancel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Edit Mode Of Bar Chart Item-->
+        </div>
+    </div>
+</div>

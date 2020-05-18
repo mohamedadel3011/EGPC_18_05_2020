@@ -1,0 +1,78 @@
+﻿
+<div class="feature_list">
+    <div class="card border_custom_gray" id="printfeatureList">
+        <div class="card-header rounded-top d-flex justify-content-between align-items-center text-white text-capitalize bg_light_blue p-2 printCustomHeader">
+            <div class="card-header-title ${nls.textAlign}" contenteditable="true" id="featureListTitleText">${nls.featureList}</div>
+            <!--<div class="toggle_mode">
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer swap_icon d-print-none" id="btnEditModeFL" data-view="#featurelist_edit_mode"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer edit_icon swap_icon d-print-none" id="btnBackModeFL" data-dojo-attach-event="click:onClickBack" data-view="#featurelist_view_mode"><i class="fas fa-chevron-left fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer deleteItem d-print-none"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>-->
+            <div class="toggle_mode toggle_mode_not_for_chart">
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer configurationItem d-print-none ${nls.margin_x_1}" data-view="#featurelist_edit_mode" data-toggle="tooltip" data-placement="top" title="${nls.configuration}"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer  d-print-none" data-dojo-attach-event="click:onClickDeleteBtn" data-toggle="tooltip" data-placement="top" title="${nls.delete}"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>
+        </div>
+        <div class="toggle_mode_container rounded-bottom my-1 ${nls.margin_x_1}">
+            <div class="view_mode d-print-block" id="featurelist_view_mode">
+                <div class="card-body px-2 py-1 printBreakPage" id="QueryGridFeatureResult"></div>
+            </div>
+            <!--End View Mode Of featurelist Item-->
+            <!--Start Edit Mode Of featurelist Item-->
+            <div class="edit_mode flex-column edit_mode_table_feature d-print-none" id="featurelist_edit_mode">
+                <div class="bg_gray py-1 ${nls.margin_x_1_reverse} ${nls.margin_x_0} border_bottom_2px">
+                    <div class="px-2">
+                        <div class="row no-gutters justify-content-between">
+                            <label class="col-sm-6 col-form-label font_size_14 font-weight-bold">${nls.featureListFieldsValidationsMSG}</label>
+                            <div class="col-sm-6">
+                                <div class="input_filter_container ${nls.input_filter_container_local} input_filter_container_FL w-50 ${nls.float} text-dark font-weight-bold d-flex">
+                                    <label class="col-sm-auto col-form-label font_size_12">${nls.filterBy}</label>
+                                    <input type="text" id="txtFilterAttributesFL" class="form-control text-muted font_size_12 border border-secondary filter_input" placeholder="${nls.filter}">
+                                    <span class="filter_icon"><i class="fas fa-filter"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body py-0 px-3 mt-3 mb-2 ${nls.margin_x_1}">
+                    <div class="">
+                        <!--border border-secondary rounded-bottom overflow-hidden-->
+                        <div class="bg-white">
+                            <div class="">
+                                <div id="checkListAttributesFL" class="row align-items-stretch ${nls.padding_x_0} ${nls.padding_x_3_reverse}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 px-2 py-0">
+                    <hr class="mt-1 mb-2" />
+                    <div class="d-flex justify-content-sm-between align-items-center">
+                        <div>
+                            <div class="custom-control ${nls.custom_control_local} custom-control_custom custom-checkbox custom-control-inline ${nls.margin_x_0}">
+                                <input type="checkbox" id="featureListdisplayNulls" name="featureListdisplayNulls" class="custom-control-input" checked>
+                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-primary text-underline" for="featureListdisplayNulls"><u>${nls.displayNulls}</u></label>
+                            </div>
+                            <div class="custom-control ${nls.custom_control_local} custom-control_custom custom-checkbox custom-control-inline ${nls.margin_x_0} ${nls.margin_x_5_reverse}">
+                                <input type="checkbox" id="featureListSelectAll" name="featureListSelectAll" class="custom-control-input">
+                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-primary text-underline" for="featureListSelectAll"><u>${nls.selectDeselectAll}</u></label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-success apply-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="featureList_apply_btn" data-dojo-attach-event="click:onApplyBtnClick">
+                                <!-- onclick="swal('Hello world!');"-->
+                                <i class="fas fa-check-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.apply}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary reset-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="featureList_reset_btn" data-dojo-attach-event="click:onResetBtnClick">
+                                <i class="fas fa-cog fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.reset}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger py-1 d-inline-flex align-items-center" id="featureList_cancel_btn" data-dojo-attach-event="click:onCancelBtnClick">
+                                <i class="fas fa-times-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.cancel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Edit Mode Of featurelist Item-->
+        </div>
+    </div>
+</div>

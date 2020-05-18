@@ -1,0 +1,22 @@
+﻿<div class="w-100">
+    <div class="d-flex flex-column custom-bg-white border-0 rounded p-0 d-print-block mr-3 ml-3" id="reportTitleContainer">
+        <div class="form-group row mb-2 position-relative ">
+            <!--<div class="frontCover"></div>-->
+            <img id="printImgPortraitHeader" src="./widgets/ReportBuilder/images/Header_Portrait.jpg" class="d-none"/>
+            <img id="printImgLandscapeHeader" src="./widgets/ReportBuilder/images/Header_Landscape.jpg" class="d-none"/>
+            <img id="printImgPortraitCover" src="./widgets/ReportBuilder/images/Report_Cover_Portrait.jpg" class="d-none"/>
+            <img id="printImgLandscapeCover" src="./widgets/ReportBuilder/images/Report_Cover_Landscape.jpg" class="d-none"/>
+            <div class="printTitleDescription w-100 titleDescription ${nls.titleDescription_local}">
+                <div class="my-1">
+                    <input id="txtReportTitle" type="text" class="col-md-12 form-control border_custom_gray rich_txt" placeholder="Title">
+                    <label class="${nls.x_4} ${nls.textAlign} font_size_14 placeholder_color d-print-none">${nls.title}</label>
+                </div>
+                <div class="my-1">
+                    <textarea id="txtReportDescription" class="col-md-12 form-control border_custom_gray rich_txt2" placeholder="Description" rows="4"></textarea>
+                    <label class="${nls.x_4} ${nls.textAlign} font_size_14 placeholder_color d-print-none">${nls.description}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

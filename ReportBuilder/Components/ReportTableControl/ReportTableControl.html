@@ -1,0 +1,83 @@
+﻿<div class="table_item">
+    <div class="card border_custom_gray" id="printTableContainer">
+        <div class="card-header rounded-top d-flex justify-content-between align-items-center text-white text-capitalize bg_light_blue p-2 printCustomHeader">
+            <div class="card-header-title ${nls.textAlign}" contenteditable="true" id="tableTitleText">${nls.table}</div>
+            <div class="toggle_mode toggle_mode_not_for_chart">
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer configurationItem d-print-none ${nls.margin_x_1}" data-view="#table_edit_mode" data-toggle="tooltip" data-placement="top" title="${nls.configuration}"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer  d-print-none" data-dojo-attach-event="click:onClickDeleteBtn" data-toggle="tooltip" data-placement="top" title="${nls.delete}"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>
+        </div>
+        <!--<p>${nls.MsgVaildateNumberChecks}</p>-->
+        <div class="toggle_mode_container rounded-bottom my-1 ${nls.margin_x_1}">
+            <!--Start View Mode Of Table Item-->
+            <div class="view_mode d-print-block" id="table_view_mode">
+                <div class="card-body p-2" id="printTableBody">
+                    <div class="table-responsive">
+                        <table id="attrTable" class="table table-sm table-bordered table-striped border mb-0">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--End View Mode Of Table Item-->
+            <!--Start Edit Mode Of Table Item-->
+            <div class="edit_mode flex-column edit_mode_table_feature d-print-none" id="table_edit_mode">
+                <div class="bg_gray py-1 ${nls.margin_x_1_reverse} ${nls.margin_x_0} border_bottom_2px">
+                    <div class="${nls.padding_x_1_reverse}">
+                        <div class="row no-gutters justify-content-between">
+                            <label class="col-sm-6 col-form-label font_size_14 font-weight-bold ${nls.padding_x_1_reverse}">${nls.tableFieldsValidationsMSG}</label>
+                            <div class="col-sm-6 d-flex justify-content-between ${nls.padding_x_2}">
+                                <div class="col-sm-6 input_filter_container ${nls.input_filter_container_local} w-25 row text-dark font-weight-bold">
+                                    <label class="col-sm-auto col-form-label font_size_12">${nls.filterBy}</label>
+                                    <input type="text" id="txtFilterAttributes" class="col-sm form-control text-muted font_size_12 border border-secondary filter_input" placeholder="${nls.filter}">
+                                    <span class="filter_icon"><i class="fas fa-filter"></i></span>
+                                </div>
+                                <div class="col-sm-6 form-group mb-0 row form-row text-dark font-weight-bold ${nls.padding_x_1}">
+                                    <label class="col-sm-auto col-form-label font_size_12">${nls.groupBy}</label>
+                                    <div class="col-sm ${nls.padding_x_0}">
+                                        <select id="ddlGroupByAttribute" class="form-control border-secondary text-dark font_size_12 font-weight-bold"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body py-0 px-3 mt-3 mb-2 ${nls.margin_x_1}">
+                    <div class="">
+                        <div class="bg-white">
+                            <div class="">
+                                <div id="checkListAttributes" class="row align-items-stretch ${nls.padding_x_0} ${nls.padding_x_3_reverse}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 px-2 py-0">
+                    <hr class="mt-1 mb-2" />
+                    <div class="d-flex justify-content-sm-between align-items-center">
+                        <div>
+                            <!--<div class="custom-control custom-checkbox custom-control-inline ${nls.margin_x_0}">
+        <input type="checkbox" id="tabledisplayNulls" name="tabledisplayNulls" class="custom-control-input" checked>
+        <label class="custom-control-label font-weight-bold font_size_14 text-primary text-underline" for="tabledisplayNulls"><u>Dispaly Nulls</u></label>
+    </div>-->
+                            <div class="custom-checkbox custom-control-inline ${nls.margin_x_0}">
+                                <a href="" class="font-weight-bold font_size_14 text-primary" data-dojo-attach-event="click:onClearSelectionClick">${nls.clearSelection}</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-success apply-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="table_apply_btn" data-dojo-attach-event="click:onApplyBtnClick">
+                                <!-- onclick="swal('Hello world!');"-->
+                                <i class="fas fa-check-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.apply}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary reset-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="table_reset_btn" data-dojo-attach-event="click:onResetBtnClick">
+                                <i class="fas fa-cog fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.reset}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger py-1 d-inline-flex align-items-center" id="table_cancel_btn" data-dojo-attach-event="click:onCancelBtnClick">
+                                <i class="fas fa-times-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.cancel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Edit Mode Of Table Item-->
+        </div>
+    </div>
+</div>

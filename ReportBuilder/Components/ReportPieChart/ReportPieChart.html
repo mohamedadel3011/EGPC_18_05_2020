@@ -1,0 +1,108 @@
+﻿<div class="pie_item col-6 mt-2">
+    <div class="card border_custom_gray printPieChart">
+        <div class="card-header rounded-top d-flex justify-content-between align-items-center text-white text-capitalize bg_light_blue p-2">
+            <div class="card-header-title ${nls.textAlign}" contenteditable="true" id="pieChartTitleText${count}">${nls.pieChart}</div>
+            <!--<div class="toggle_mode">
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer swap_icon" data-view="#pie_edit_mode"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer edit_icon swap_icon" data-view="#pie_view_mode"><i class="fas fa-chevron-left fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-white p-1 p-md-2 cursor_pointer deleteItem"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>-->
+            <div class="toggle_mode toggle_mode_for_chart d-flex">
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer configurationItem d-print-none ${nls.margin_x_2}" id="pieViewMode${count}" data-dojo-attach-event="click:onClickConfigrationItem" data-toggle="tooltip" data-placement="top" title="${nls.configuration}"><i class="fas fa-sliders-h fa-lg"></i></span>
+                <span class="badge bg_dark_blue border border-dark p-1 p-md-2 cursor_pointer deleteItem d-print-none" id="pie_deleteItem${count}" data-dojo-attach-event="click:onClickDeleteItem" data-toggle="tooltip" data-placement="top" title="${nls.delete}"><i class="far fa-trash-alt fa-lg"></i></span>
+            </div>
+        </div>
+        <div class="toggle_mode_container rounded-bottom ${nls.margin_x_1} my-1">
+            <!--my-1 -->
+            <!--Start View Mode Of Pie Chart Item-->
+            <div class="view_mode view_mode_chart d-none d-print-block" id="pie_view_mode${count}" style="position: relative;">
+                <div class="card-body">
+                    <canvas class="d-print-flex" id="myPieChart${count}" style="display: block;height: 300px;position: absolute;top:0;bottom:0;right:0;left:0;margin:auto;"></canvas>
+                </div>
+            </div>
+            <!--End View Mode Of Pie Chart Item-->
+            <!--Start Edit Mode Of Pie Chart Item-->
+            <div class="edit_mode edit_icon_content edit_mode_chart d-block d-print-none" id="pie_edit_mode${count}">
+                <div class="card-body px-2 pt-1">
+                    <form>
+                        <div class="form-group row mb-2 no-gutters">
+                            <label class="col-sm-3 col-form-label font-weight-bold font_size_14 text-muted">${nls.chartField}</label>
+                            <div class="col-sm-9 custom-control">
+                                <select class="form-control border-secondary text-dark p-0 font_size_12" id="ddlPieChartFields${count}">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="">
+                            <!--form-group mb-2 border border-secondary rounded p-2 pb-0-->
+                            <!--ColorPiker-->
+                            <div class="" id="pieChartPickerColor${count}">
+
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2 no-gutters">
+                            <div class="col-sm-9 offset-sm-3 row no-gutters">
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="checkbox" class="custom-control-input" id="displayLabels${count}" checked>
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLabels${count}">${nls.displayLabels}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="checkbox" class="custom-control-input" id="displayLegendPie${count}">
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="displayLegendPie${count}">${nls.displayChartLegend}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row mb-2 no-gutters">
+                            <div class="col-sm-9 offset-sm-3 row no-gutters">
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="radio" id="count${count}" name="customRadioInline${count}" class="custom-control-input" checked>
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="count${count}">${nls.count}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ${nls.padding_x_0}">
+                                    <div class="custom-control ${nls.custom_control_local} custom-radio custom-control-inline ${nls.custom_control_inline_local} ${nls.margin_x_0}">
+                                        <input type="radio" id="percentage${count}" name="customRadioInline${count}" class="custom-control-input">
+                                        <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-muted" for="percentage${count}">${nls.percentage}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-footer bg-transparent border-0 px-2 py-0">
+                    <hr class="mt-1 mb-2" />
+                    <div class="d-flex justify-content-sm-between align-items-center">
+                        <div>
+                            <div class="custom-control ${nls.custom_control_local} custom-checkbox custom-control-inline ${nls.margin_x_0}">
+                                <input type="checkbox" id="piedisplayNulls${count}" name="piedisplayNulls" class="custom-control-input" checked>
+                                <label class="custom-control-label ${nls.custom_control_label_local} font-weight-bold font_size_14 text-primary text-underline" for="piedisplayNulls${count}"><u>${nls.displayNulls}</u></label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-success apply-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="pie_apply_btn${count}" data-dojo-attach-event="click:onClickApply" disabled>
+                                <!-- onclick="swal('Hello world!');"-->
+                                <i class="fas fa-check-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.apply}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary reset-btn py-1 ${nls.margin_x_1} d-inline-flex align-items-center" id="pie_reset_btn${count}" data-dojo-attach-event="click:onClickReset" disabled>
+                                <i class="fas fa-cog fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.reset}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger py-1 d-inline-flex align-items-center" id="pie_cancel_btn${count}" data-dojo-attach-event="click:onClickCancel" disabled>
+                                <i class="fas fa-times-circle fa-md ${nls.margin_x_2}"></i><span class="font_size_14">${nls.cancel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Edit Mode Of Pie Chart Item-->
+        </div>
+    </div>
+</div>
+
+

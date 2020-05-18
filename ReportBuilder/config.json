@@ -1,0 +1,30 @@
+{
+  "queryWidgetId": "_5",
+  "maxRecordsNumber": "1000",
+  "maxChartLabelLength": 30,
+  "exportWebMapServiceURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+  "exportLayersLegendURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/EGPC_Sample/Wells/MapServer/legend?f=pjson",
+  "mapServiceWellsLayersURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/EGPC_Sample/Wells/MapServer",
+  "mapServiceStationsLayersURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/EGPC_Sample/Stations/MapServer",
+  "mapServicePiplinesLayersURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/EGPC_Sample/Pipelines/MapServer",
+  "mapServiceConcessionLayersURL": "https://egpcweb.eastus.cloudapp.azure.com/arcgis/rest/services/EGPC_Sample/Concession/MapServer",
+  "printThisLoadCssPortraitURL": "https://localhost/ESRINeA.EGPC.ReportBuilder/widgets/ReportBuilder/css/style_print_portrait.css",
+  "printThisLoadCssLandscapeURL": "https://localhost/ESRINeA.EGPC.ReportBuilder/widgets/ReportBuilder/css/style_print_landscape.css",
+  "printThisBaseURL": "https://localhost/ESRINeA.EGPC.ReportBuilder/",
+  "printCoverImgURLPortrait": "./widgets/ReportBuilder/images/Report_Cover_Portrait.jpg",
+  "printCoverImgURLLandscape": "./widgets/ReportBuilder/images/Report_Cover_Landscape.jpg",
+  "landscapeMode": {
+    "legendColumnsNumber": 6,
+    "featureListColumnsNumber": 4,
+    "barChartNumber": 3,
+    "pieChartNumber": 3
+  },
+  "portraitMode": {
+    "legendColumnsNumber": 4,
+    "featureListColumnsNumber": 3,
+    "barChartNumber": 2,
+    "pieChartNumber": 2
+  }
+
+
+}
